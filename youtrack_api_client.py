@@ -36,7 +36,7 @@ class Youtrack_api_client:
 
     def get_issue_properties_by_id(self, issue_id):
         params = {
-            'fields': '$type,id,summary,customFields($type,id,projectCustomField($type,id,field($type,id,name)),value($type,avatarUrl,buildLink,color(id),fullName,id,isResolved,localizedName,login,minutes,name,presentation,text))'
+            'fields': '$type,id,summary,project(shortName),customFields($type,id,projectCustomField($type,id,field($type,id,name)),value($type,avatarUrl,buildLink,color(id),fullName,id,isResolved,localizedName,login,minutes,name,presentation,text))'
         }
         response = requests.get("{}/api/issues/{}".format(self.base_url, issue_id), headers=self.headers, params=params, verify=self.cert_verify)
         if response.status_code == 200:
