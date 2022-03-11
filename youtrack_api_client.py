@@ -25,7 +25,7 @@ class Youtrack_api_client:
 
     def get_issues_by_query(self, query):
         params = (
-            ('fields', 'idReadable,summary'),
+            ('fields', 'idReadable,summary,description'),
             ('query', query),
         )
         response = requests.get("{}/api/issues".format(self.base_url), headers=self.headers, params=params, verify=self.cert_verify)
